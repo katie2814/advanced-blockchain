@@ -1,0 +1,24 @@
+pragma solidity >=0.5.14 < 0.6.1;
+
+contract bank
+{
+   address public myaddress;
+   uint public balance;
+
+constructor() public
+{
+    myaddress=msg.sender;
+}
+function getether()public payable {
+    balance+=msg.value;
+}
+
+function withdraw( address payable owner)public
+{
+    owner.transfer(address(this).balance);
+}
+function currentbalance()public view returns(uint256)
+{
+    return address(this).balance;
+}
+}
